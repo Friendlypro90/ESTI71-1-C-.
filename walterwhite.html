@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vida Saludable</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#2e7d32;
+    color:white;
+    min-height:100vh;
+    transition:background 1.2s ease;
+}
+
+/* ESCALA PARA CELULAR */
+@media (max-width:600px){
+    body{font-size:14px;}
+    .contenedor{padding:20px;}
+    button{font-size:14px;padding:12px 18px;}
+    .contenido{padding:18px;}
+}
+
+.hoja{
+    position:absolute;
+    width:130px;
+    height:65px;
+    background:rgba(255,255,255,0.15);
+    border-radius:0 100px;
+}
+.h1{top:40px;left:30px;transform:rotate(25deg);}
+.h2{top:200px;right:40px;transform:rotate(-20deg);}
+.h3{bottom:120px;left:80px;transform:rotate(45deg);}
+
+.contenedor{text-align:center;padding:40px;}
+
+.botones{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    justify-content:center;
+}
+
+button{
+    padding:15px 25px;
+    font-size:16px;
+    border:none;
+    border-radius:15px;
+    background:#66bb6a;
+    color:#1b5e20;
+    font-weight:bold;
+    cursor:pointer;
+}
+button:hover{background:#81c784;}
+
+.equipo-btn{
+    background:#fbc02d;
+    color:#3e2723;
+    font-size:18px;
+}
+
+.contenido{
+    display:none;
+    max-width:900px;
+    margin:auto;
+    background:rgba(0,0,0,0.3);
+    padding:25px;
+    border-radius:15px;
+    opacity:0;
+    transform:scale(0.9);
+    transition:opacity 1s ease, transform 1s ease;
+}
+
+.contenido.activo{opacity:1;transform:scale(1);}
+
+.regresar{margin-top:20px;background:#aed581;}
+
+input, textarea{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border-radius:8px;
+    border:none;
+}
+
+.comentario{
+    background:rgba(255,255,255,0.2);
+    padding:10px;
+    border-radius:8px;
+    margin-top:10px;
+}
+
+.marca-agua{
+    position:fixed;
+    bottom:10px;
+    right:15px;
+    color:rgba(255,255,255,0.6);
+    font-size:14px;
+    font-weight:bold;
+    pointer-events:none;
+}
+
+.equipo{
+    background:linear-gradient(135deg,#b8860b,#ffd700);
+    color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hoja h1"></div>
+<div class="hoja h2"></div>
+<div class="hoja h3"></div>
+
+<div class="contenedor" id="inicio">
+<h1>Vida Saludable</h1>
+<div class="botones">
+<button onclick="mostrar('plato')">🥗 Plato del Bien Comer</button>
+<button onclick="mostrar('jarra')">🥤 Jarra del Buen Beber</button>
+<button onclick="mostrar('dietas')">🍎 Dietas</button>
+<button onclick="mostrar('ejercicio')">🏃 Ejercicio</button>
+<button onclick="mostrar('comentarios')">💬 Preguntas</button>
+<button class="equipo-btn" onclick="mostrarEquipo()">⭐ EQUIPO</button>
+</div>
+</div>
+
+<div class="contenido" id="plato">
+<h2>Plato del Bien Comer</h2>
+<p>Guía para una alimentación correcta y equilibrada.</p>
+
+<h3>Grupos, aportaciones y alimentos</h3>
+<ul>
+<li><b>Verduras y frutas:</b> vitaminas, minerales y fibra. Ejemplos: manzana, zanahoria, espinaca.</li>
+<li><b>Cereales:</b> energía. Ejemplos: arroz, tortilla, pan.</li>
+<li><b>Leguminosas y alimentos de origen animal:</b> proteínas, hierro y calcio. Ejemplos: frijol, huevo, pollo.</li>
+</ul>
+
+<h3>Prevención de enfermedades</h3>
+<p>
+Ayuda a prevenir obesidad, diabetes, anemia y enfermedades del corazón.
+</p>
+
+<h3>Características de la dieta correcta</h3>
+<ul>
+<li>Completa</li>
+<li>Variada</li>
+<li>Equilibrada</li>
+<li>Inocua</li>
+<li>Suficiente</li>
+<li>Adecuada</li>
+</ul>
+
+<button class="regresar" onclick="volver()">⬅ Regresar</button>
+</div>
+
+<div class="contenido" id="jarra">
+<h2>Jarra del Buen Beber</h2>
+
+<ul>
+<li><b>Agua natural:</b> hidrata y regula el cuerpo.</li>
+<li><b>Leche baja en grasa:</b> calcio para huesos.</li>
+<li><b>Bebidas sin azúcar:</b> evitan calorías vacías.</li>
+<li><b>Evitar refrescos:</b> previene diabetes y caries.</li>
+</ul>
+
+<h3>Prevención</h3>
+<p>
+Evita deshidratación, obesidad y enfermedades renales.
+</p>
+
+<button class="regresar" onclick="volver()">⬅ Regresar</button>
+</div>
+
+<div class="contenido" id="dietas">
+<h2>Dietas</h2>
+<p>Una dieta saludable aporta los nutrientes necesarios.</p>
+
+<h3>Dieta correcta</h3>
+<ul>
+<li>Incluye todos los grupos.</li>
+<li>Es variada y equilibrada.</li>
+<li>Respeta horarios.</li>
+</ul>
+
+<h3>Dieta incorrecta</h3>
+<ul>
+<li>Comida chatarra.</li>
+<li>Saltarse comidas.</li>
+<li>Eliminar grupos.</li>
+</ul>
+
+<h3>Recomendaciones</h3>
+<ul>
+<li>Consumir frutas y verduras.</li>
+<li>Reducir azúcar y grasas.</li>
+<li>Tomar agua natural.</li>
+</ul>
+
+<button class="regresar" onclick="volver()">⬅ Regresar</button>
+</div>
+
+<div class="contenido" id="ejercicio">
+<h2>Ejercicio</h2>
+<p>Hacer ejercicio una hora diaria mejora la salud.</p>
+
+<ul>
+<li>Mejora el corazón.</li>
+<li>Fortalece músculos.</li>
+<li>Reduce estrés.</li>
+</ul>
+
+<h3>Consecuencias del sedentarismo</h3>
+<ul>
+<li>Aumento de peso.</li>
+<li>Problemas cardiovasculares.</li>
+<li>Cansancio.</li>
+</ul>
+
+<h3>Recomendaciones</h3>
+<ul>
+<li>Caminar o correr.</li>
+<li>Ejercicios de fuerza.</li>
+<li>Estiramientos.</li>
+</ul>
+
+<button class="regresar" onclick="volver()">⬅ Regresar</button>
+</div>
+
+<div class="contenido" id="comentarios">
+<h2>Preguntas y Comentarios</h2>
+<input id="nombre" placeholder="Nombre">
+<textarea id="mensaje" placeholder="Pregunta o comentario"></textarea>
+<button onclick="comentar()">Enviar</button>
+<div id="lista"></div>
+<button class="regresar" onclick="volver()">⬅ Regresar</button>
+</div>
+
+<div class="contenido equipo" id="equipo">
+<h2>⭐ EQUIPO</h2>
+<ol>
+<li>Kevin Alexis</li>
+<li>Sebastián Daniel</li>
+<li>Diego Jared</li>
+<li>William Luna</li>
+<li>Cesar Leonardo</li>
+<li>Luis Alberto</li>
+</ol>
+<button class="regresar" onclick="volver()">⬅ Regresar</button>
+</div>
+
+<div class="marca-agua">ESTI 71 1° "C"</div>
+
+<script>
+function mostrar(id){
+    document.body.style.background="#2e7d32";
+    document.getElementById("inicio").style.display="none";
+    document.querySelectorAll(".contenido").forEach(c=>{
+        c.style.display="none";
+        c.classList.remove("activo");
+    });
+    let sec=document.getElementById(id);
+    sec.style.display="block";
+    setTimeout(()=>sec.classList.add("activo"),50);
+}
+
+function mostrarEquipo(){
+    document.body.style.background="#b8860b";
+    mostrar("equipo");
+}
+
+function volver(){
+    document.body.style.background="#2e7d32";
+    document.querySelectorAll(".contenido").forEach(c=>c.style.display="none");
+    document.getElementById("inicio").style.display="block";
+}
+
+function comentar(){
+    let nombreInput=document.getElementById("nombre");
+    let mensajeInput=document.getElementById("mensaje");
+    let lista=document.getElementById("lista");
+
+    if(!nombreInput.value||!mensajeInput.value){
+        alert("Completa los campos");
+        return;
+    }
+
+    lista.innerHTML+=`<div class="comentario"><b>${nombreInput.value}</b>: ${mensajeInput.value}</div>`;
+    mensajeInput.value="";
+}
+</script>
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+    let lista = document.getElementById("lista");
+    if (!lista) return;
+
+    // Cargar preguntas guardadas
+    let preguntas = JSON.parse(localStorage.getItem("preguntas")) || [];
+    preguntas.forEach(p => {
+        lista.innerHTML += `<div class="comentario"><b>${p.nombre}</b>: ${p.mensaje}</div>`;
+    });
+
+    // Guardar nuevas preguntas sin cambiar función
+    const comentarOriginal = window.comentar;
+
+    window.comentar = function () {
+        let n = document.getElementById("nombre").value;
+        let m = document.getElementById("mensaje").value;
+
+        if (!n || !m) {
+            comentarOriginal();
+            return;
+        }
+
+        preguntas.push({ nombre: n, mensaje: m });
+        localStorage.setItem("preguntas", JSON.stringify(preguntas));
+
+        comentarOriginal();
+    };
+});
+</script>
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBIa4lXtnIBmFWyodLNlXJdL90ki4-GSj8",
+    authDomain: "esti71-1c.firebaseapp.com",
+    projectId: "esti71-1c",
+    storageBucket: "esti71-1c.firebasestorage.app",
+    messagingSenderId: "1008368991540",
+    appId: "1:1008368991540:web:f12da9b248a43479973961",
+    measurementId: "G-HS3S28TCGY"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+
+<script>
+function comentar(){
+    let n = document.getElementById("nombre").value;
+    let m = document.getElementById("mensaje").value;
+
+    if(!n || !m){
+        alert("Completa los campos");
+        return;
+    }
+
+    db.collection("preguntas").add({
+        nombre: n,
+        mensaje: m,
+        fecha: Date.now()
+    });
+
+    document.getElementById("mensaje").value = "";
+}
+</script>
+
+<script>
+db.collection("preguntas")
+  .orderBy("fecha")
+  .onSnapshot(snapshot=>{
+    let lista = document.getElementById("lista");
+    lista.innerHTML = "";
+    snapshot.forEach(doc=>{
+        let p = doc.data();
+        lista.innerHTML += `<div class="comentario"><b>${p.nombre}</b>: ${p.mensaje}</div>`;
+    });
+});
+</script>
+<script>
+function comentar(){
+  let nombre = document.getElementById("nombre").value;
+  let mensaje = document.getElementById("mensaje").value;
+
+  if(!nombre || !mensaje){
+    alert("Completa los campos");
+    return;
+  }
+
+  db.collection("preguntas").add({
+    nombre: nombre,
+    mensaje: mensaje,
+    fecha: firebase.firestore.FieldValue.serverTimestamp()
+  });
+
+  document.getElementById("mensaje").value = "";
+}
+</script>
+<script>
+db.collection("preguntas")
+  .orderBy("fecha", "asc")
+  .onSnapshot(snapshot=>{
+    let lista = document.getElementById("lista");
+    lista.innerHTML = "";
+    snapshot.forEach(doc=>{
+      let p = doc.data();
+      lista.innerHTML += `
+        <div class="comentario">
+          <b>${p.nombre}</b>: ${p.mensaje}
+        </div>
+      `;
+    });
+  });
+</script>
+</body>
+</html
